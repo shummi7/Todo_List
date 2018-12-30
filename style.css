@@ -1,0 +1,19 @@
+h1{
+    text-align: center;
+
+}
+.mainArea{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.addlist{
+    display: flex;
+    flex-direction: row;
+}
+.ullist{
+    display: flex;
+    flex-direction: column;
+}
