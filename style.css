@@ -1,19 +1,89 @@
+body{
+    width: 100%;
+}
+
 h1{
-    text-align: center;
+    text-align      : center;
+    background-color: darkslategray;
+    color           : white;
 
 }
 .mainArea{
-    display        : flex;
-    flex-direction : column;
-    justify-content: center;
-    align-items    : center;
+    height          : 700px;
+    background-color: coral;
+    color           : rgb(26, 14, 14);
+    font-size       : 2.5vw;
+    display         : flex;
+    flex-direction  : column;
+    justify-content : center;
+    align-items     : center;
 
 }
 .addlist{
     display       : flex;
     flex-direction: row;
+    padding-top   : 50px;
+    
+    
 }
+
+input[type=text] {
+    background   : transparent;
+    border       : none;
+    font-size    : 2.5vw;
+    border-bottom: 1px solid #000000;
+    outline      : none;
+}
+
+#enterbutton{
+    font-size       : 2vw;
+    border-radius   : 12px;
+    background-color: rgb(116, 204, 33);
+    border-color    : rgb(2, 100, 27)
+    
+}
+
+
 .ul_list{
     display       : flex;
     flex-direction: column;
+    
+}
+
+.scrollbar {
+   
+    float     : left;
+    max-height: 200px;
+    
+    overflow-y   : auto;
+    margin-bottom: 250px;
+    margin-left  : 22px;
+    margin-top   : 40px;
+    
+}
+
+.force-overflow {
+    min-height: 400px;
+}
+
+#style-1::-webkit-scrollbar {
+    width           : 10px;
+    background-color: #F5F5F5;
+} 
+#style-1::-webkit-scrollbar-thumb {
+    background-color: #000000;
+}
+
+li {
+    width   : 500px;
+    position: relative;
+    border  : 2px solid black;
+}
+
+.close{
+    position: absolute;
+    
+    right   : 0;
+    top     : 0;
+    background-color: rgb(49, 49, 51)
 }
