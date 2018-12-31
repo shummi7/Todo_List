@@ -3,17 +3,17 @@ h1{
 
 }
 .mainArea{
-    display: flex;
-    flex-direction: column;
+    display        : flex;
+    flex-direction : column;
     justify-content: center;
-    align-items: center;
+    align-items    : center;
 
 }
 .addlist{
-    display: flex;
+    display       : flex;
     flex-direction: row;
 }
-.ullist{
-    display: flex;
+.ul_list{
+    display       : flex;
     flex-direction: column;
 }
