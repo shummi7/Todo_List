@@ -1,60 +1,76 @@
-var addtext     = document.getElementById("addtext");
-var enterbutton = document.getElementById("enterbutton");
-var ullist      = document.querySelector('ul');
-var li          = document.querySelectorAll('li');
-var close       = document.getElementsByClassName('close');
+var del='&#10008';
+var check='&#10004';
 
-///adding close buton to the list items
-for(var i=0;i<li.length;i++){
-    var x                   = document.createTextNode('X');
-    var closespan           = document.createElement('span');
-        closespan.className = 'close';
-    closespan.appendChild(x);
-    li[i].appendChild(closespan);
-}
+////////////////////////////////////////////////////////////////////////
+var itemtext=document.getElementById('itemtext');
+var addbutton=document.getElementById('addbutton');
+var todolist=document.getElementById('todo');
+var completedlist=document.getElementById('completed');
+////////////////////////////////////////////////////////////////////////
 
-//adding items to the existing list
-function addtextlength(){
-    return addtext.value.length;
+//removing items from the todolist
+function removeitemfunc(){
+    var linode=this.parentNode.parentNode;
+    var parent=linode.parentNode;
+    parent.removeChild(linode);
 }
-function buttonclick(){
-    if(addtextlength()>0){
-        addinglist();
+///////////////////////////////////////////////////////////////////////
+
+//completed item shifted to new ul
+function completeitemfunc(){
+    var linode=this.parentNode.parentNode;
+    var parent=linode.parentNode;
+    var id=parent.id;
+    parent.removeChild(linode);
+    if(id==='todo'){
+        completedlist.insertBefore(linode,completedlist.childNodes[0]);
+
     }
-}
+    else{
+        todolist.insertBefore(linode,todolist.childNodes[0]);
+    }    
+} 
 
-function keyclick(event){
-    if(addtextlength()>0 && event.keyCode === 13){
-        addinglist();
-    }
-}
 
-function addinglist(){
+//adding items to the todolist
+function addtexttolist(){
+   var itemtextnode=document.createTextNode(itemtext.value);
+   var itemli=document.createElement('li');
+
+   var itemdiv=document.createElement('div');
+   itemdiv.classList.add('buttons');
+
+   var itemremove=document.createElement('button');
+   itemremove.classList.add('remove');
+   itemremove.innerHTML=del;
+
+   itemremove.addEventListener('click',removeitemfunc);
+
+   var itemcomplete=document.createElement('button');
+   itemcomplete.classList.add('complete');
+   itemcomplete.innerHTML=check;
+
+   itemcomplete.addEventListener('click',completeitemfunc);
    
-    var textnode   = document.createTextNode(addtext.value);
-    var litextnode = document.createElement('li');
-    litextnode.appendChild(textnode);
-    ullist.appendChild(litextnode);
-            addtext.value       = '';
-        var x                   = document.createTextNode('X');
-        var closespan           = document.createElement('span');
-            closespan.className = 'close';
-    closespan.appendChild(x);
-    litextnode.appendChild(closespan);
-      
+   itemdiv.appendChild(itemremove);
+   itemdiv.appendChild(itemcomplete);
+   itemli.appendChild(itemtextnode);
+   itemli.appendChild(itemdiv);
+   todolist.insertBefore(itemli,todolist.childNodes[0]);
+
+   itemtext.value='';
 }
 
-
-enterbutton.addEventListener('click', buttonclick);
-addtext.addEventListener('keypress', keyclick);
-
-//clicking close button to delete the item from the list
-
-for(var i=0;i<close.length;i++){
-    function deletelist(){
-        debugger;
-        var div=this.parentElement;
-        div.style.display='none';
+function mouseclickadd(){
+    if(itemtext.value.length>0){
+        addtexttolist();
     }
-    close[i].addEventListener('click', deletelist);
 }
+function keyenteradd(e){
+    if(itemtext.value.length>0 && e.keyCode===13){
+        addtexttolist();
+    }
+}
+addbutton.addEventListener('click',mouseclickadd);
+itemtext.addEventListener('keypress',keyenteradd);
+

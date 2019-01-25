@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>TO-DO LIST</title>
-    <link rel = "stylesheet" href = "style.css">
+	<meta charset="utf-8">
+	<title>Todo List</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css"> 
 </head>
 <body>
-<h1> TO-DO LIST</h1>
-    <div class = 'mainArea'>
+	<header>
+		<input id="itemtext" type="text" placeholder="Enter item here">
+		<button id='addbutton'>ENTER</button>
+	</header>
 
-        <div    class = 'addlist'>
-        <input  id    = 'addtext' type     = "text" placeholder = "Enter here">
-        <button id    = "enterbutton" type = "button">Enter</button>
-        </div>
+	<div class='container'>
 
-        <div class = 'ul_list'>
+		<ul class='todo' id='todo'>
+			<!-- <li>this is an item
+				<div class='buttons'>
+					<button class='remove'></button>
+					<button class="complete"></button>
+				</div>
+			</li> -->
+		</ul>
 
-        <ul class = 'ullist scrollbar' id = "style-1">
-            <li>pen</li>
-            <li>pencil</li>
-            <li>sharpener</li>
-        </ul> 
-        </div>
-    </div>
 
-<script type = "text/javascript" src = "script.js"></script>
+		<ul class='todo' id='completed'>
+			
+		</ul>
+	</div>
+	<script type = "text/javascript" src = "script.js"></script>
 </body>
 </html>
+
